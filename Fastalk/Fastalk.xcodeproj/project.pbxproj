@@ -1,0 +1,530 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		080F6C7B204B951C008A5C98 /* LoginOrRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080F6C7A204B951C008A5C98 /* LoginOrRegisterViewController.swift */; };
+		0825C52E206F472500CF29ED /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825C52D206F472500CF29ED /* SearchTableViewController.swift */; };
+		0825C532206F4C5A00CF29ED /* SearchMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825C531206F4C5A00CF29ED /* SearchMessageCell.swift */; };
+		0825C534206F4FBB00CF29ED /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825C533206F4FBB00CF29ED /* Message.swift */; };
+		0825C5382071BB9E00CF29ED /* SearchResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825C5372071BB9E00CF29ED /* SearchResultsTableViewCell.swift */; };
+		085B9032204F4641001DDE8D /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085B9031204F4641001DDE8D /* ContactsTableViewController.swift */; };
+		086C8EF72051FC7000F74AAF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086C8EF62051FC7000F74AAF /* SettingsViewController.swift */; };
+		086C8EFB205236B700F74AAF /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086C8EFA205236B700F74AAF /* Contact.swift */; };
+		08957DCA204E536800EB10F7 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08957DC9204E536800EB10F7 /* PopoverViewController.swift */; };
+		08C538992043D1C6002C2393 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C538982043D1C6002C2393 /* AppDelegate.swift */; };
+		08C5389B2043D1C6002C2393 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C5389A2043D1C6002C2393 /* ChatViewController.swift */; };
+		08C5389E2043D1C6002C2393 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08C5389C2043D1C6002C2393 /* Main.storyboard */; };
+		08C538A02043D1C6002C2393 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08C5389F2043D1C6002C2393 /* Assets.xcassets */; };
+		08C538A32043D1C6002C2393 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08C538A12043D1C6002C2393 /* LaunchScreen.storyboard */; };
+		08C538AD2043D274002C2393 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 08C538AC2043D274002C2393 /* Podfile */; };
+		08C538B02043D4F6002C2393 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 08C538AF2043D4F6002C2393 /* GoogleService-Info.plist */; };
+		08C538B22043D5A6002C2393 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C538B12043D5A6002C2393 /* Constants.swift */; };
+		08CDD056204BA9D7007439F5 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CDD055204BA9D7007439F5 /* MyTabBarController.swift */; };
+		08CDD058204BB423007439F5 /* ChatsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CDD057204BB423007439F5 /* ChatsListTableViewController.swift */; };
+		08CDD05A204BB48A007439F5 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CDD059204BB48A007439F5 /* Chat.swift */; };
+		08E31AE1204CDD940033A7BD /* SetUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E31AE0204CDD940033A7BD /* SetUsernameViewController.swift */; };
+		08E31AE3204CE2620033A7BD /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E31AE2204CE2620033A7BD /* Config.swift */; };
+		2C0C60C47A3A95B853633E5D /* Pods_Fastalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B12BDBBEECBFED4BBF45BF5 /* Pods_Fastalk.framework */; };
+		6AF04C0B2054C2A7002DAE48 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF04C0A2054C2A7002DAE48 /* AVFoundation.framework */; };
+		6AF04C0F2054C58A002DAE48 /* moments.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 6AF04C0E2054C58A002DAE48 /* moments.mp4 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		080F6C7A204B951C008A5C98 /* LoginOrRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOrRegisterViewController.swift; sourceTree = "<group>"; };
+		0825C52D206F472500CF29ED /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		0825C531206F4C5A00CF29ED /* SearchMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMessageCell.swift; sourceTree = "<group>"; };
+		0825C533206F4FBB00CF29ED /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		0825C5372071BB9E00CF29ED /* SearchResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewCell.swift; sourceTree = "<group>"; };
+		085B9031204F4641001DDE8D /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
+		086C8EF62051FC7000F74AAF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		086C8EFA205236B700F74AAF /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		08957DC9204E536800EB10F7 /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		08C538952043D1C6002C2393 /* Fastalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fastalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		08C538982043D1C6002C2393 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		08C5389A2043D1C6002C2393 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		08C5389D2043D1C6002C2393 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		08C5389F2043D1C6002C2393 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		08C538A22043D1C6002C2393 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		08C538A42043D1C6002C2393 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08C538AC2043D274002C2393 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		08C538AE2043D3F4002C2393 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		08C538AF2043D4F6002C2393 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		08C538B12043D5A6002C2393 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Fastalk/Constants.swift; sourceTree = "<group>"; };
+		08CDD055204BA9D7007439F5 /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
+		08CDD057204BB423007439F5 /* ChatsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsListTableViewController.swift; sourceTree = "<group>"; };
+		08CDD059204BB48A007439F5 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		08E31AE0204CDD940033A7BD /* SetUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUsernameViewController.swift; sourceTree = "<group>"; };
+		08E31AE2204CE2620033A7BD /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		1E49F27962CDE2497FDA5C3D /* Pods-Fastalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fastalk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fastalk/Pods-Fastalk.debug.xcconfig"; sourceTree = "<group>"; };
+		3B12BDBBEECBFED4BBF45BF5 /* Pods_Fastalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fastalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		664D00B332CD5FC3A820582F /* Pods-Fastalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fastalk.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fastalk/Pods-Fastalk.release.xcconfig"; sourceTree = "<group>"; };
+		6AF04C0A2054C2A7002DAE48 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		6AF04C0E2054C58A002DAE48 /* moments.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = moments.mp4; path = Fastalk/Assets.xcassets/moments.mp4; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		08C538922043D1C6002C2393 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AF04C0B2054C2A7002DAE48 /* AVFoundation.framework in Frameworks */,
+				2C0C60C47A3A95B853633E5D /* Pods_Fastalk.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080F6C7D204B9728008A5C98 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				080F6C7A204B951C008A5C98 /* LoginOrRegisterViewController.swift */,
+				6AF04C0E2054C58A002DAE48 /* moments.mp4 */,
+				08C5389A2043D1C6002C2393 /* ChatViewController.swift */,
+				08CDD055204BA9D7007439F5 /* MyTabBarController.swift */,
+				08CDD057204BB423007439F5 /* ChatsListTableViewController.swift */,
+				08E31AE0204CDD940033A7BD /* SetUsernameViewController.swift */,
+				08957DC9204E536800EB10F7 /* PopoverViewController.swift */,
+				085B9031204F4641001DDE8D /* ContactsTableViewController.swift */,
+				086C8EF62051FC7000F74AAF /* SettingsViewController.swift */,
+				0825C52D206F472500CF29ED /* SearchTableViewController.swift */,
+				0825C531206F4C5A00CF29ED /* SearchMessageCell.swift */,
+				0825C5372071BB9E00CF29ED /* SearchResultsTableViewCell.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		080F6C7E204B9743008A5C98 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				08C538982043D1C6002C2393 /* AppDelegate.swift */,
+				08C538AF2043D4F6002C2393 /* GoogleService-Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0882F5D12044E96F00BBCEFA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				08CDD059204BB48A007439F5 /* Chat.swift */,
+				08E31AE2204CE2620033A7BD /* Config.swift */,
+				086C8EFA205236B700F74AAF /* Contact.swift */,
+				0825C533206F4FBB00CF29ED /* Message.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0882F5D42044EB2F00BBCEFA /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				08C5389C2043D1C6002C2393 /* Main.storyboard */,
+				08C538A12043D1C6002C2393 /* LaunchScreen.storyboard */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		08C5388C2043D1C6002C2393 = {
+			isa = PBXGroup;
+			children = (
+				08C538B12043D5A6002C2393 /* Constants.swift */,
+				08C538AE2043D3F4002C2393 /* Bridging-Header.h */,
+				08C538972043D1C6002C2393 /* Fastalk */,
+				08C538962043D1C6002C2393 /* Products */,
+				3F12AD3243BDD213D94A8564 /* Pods */,
+				3D0F8F91E097C77BC6753893 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		08C538962043D1C6002C2393 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				08C538952043D1C6002C2393 /* Fastalk.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		08C538972043D1C6002C2393 /* Fastalk */ = {
+			isa = PBXGroup;
+			children = (
+				08C538A42043D1C6002C2393 /* Info.plist */,
+				080F6C7E204B9743008A5C98 /* Supporting Files */,
+				080F6C7D204B9728008A5C98 /* Controller */,
+				0882F5D42044EB2F00BBCEFA /* Layout */,
+				0882F5D12044E96F00BBCEFA /* Model */,
+				08C5389F2043D1C6002C2393 /* Assets.xcassets */,
+				08C538AC2043D274002C2393 /* Podfile */,
+			);
+			path = Fastalk;
+			sourceTree = "<group>";
+		};
+		3D0F8F91E097C77BC6753893 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6AF04C0A2054C2A7002DAE48 /* AVFoundation.framework */,
+				3B12BDBBEECBFED4BBF45BF5 /* Pods_Fastalk.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3F12AD3243BDD213D94A8564 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1E49F27962CDE2497FDA5C3D /* Pods-Fastalk.debug.xcconfig */,
+				664D00B332CD5FC3A820582F /* Pods-Fastalk.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		08C538942043D1C6002C2393 /* Fastalk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 08C538A72043D1C6002C2393 /* Build configuration list for PBXNativeTarget "Fastalk" */;
+			buildPhases = (
+				A54D14CAC304D30DD641E027 /* [CP] Check Pods Manifest.lock */,
+				08C538912043D1C6002C2393 /* Sources */,
+				08C538922043D1C6002C2393 /* Frameworks */,
+				08C538932043D1C6002C2393 /* Resources */,
+				902914278C7699DEAF85259C /* [CP] Embed Pods Frameworks */,
+				F46BBF53044BB2D156A4D179 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Fastalk;
+			productName = Fastalk;
+			productReference = 08C538952043D1C6002C2393 /* Fastalk.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08C5388D2043D1C6002C2393 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = IOSGroup7;
+				TargetAttributes = {
+					08C538942043D1C6002C2393 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 08C538902043D1C6002C2393 /* Build configuration list for PBXProject "Fastalk" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 08C5388C2043D1C6002C2393;
+			productRefGroup = 08C538962043D1C6002C2393 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				08C538942043D1C6002C2393 /* Fastalk */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		08C538932043D1C6002C2393 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08C538A32043D1C6002C2393 /* LaunchScreen.storyboard in Resources */,
+				08C538A02043D1C6002C2393 /* Assets.xcassets in Resources */,
+				08C538B02043D4F6002C2393 /* GoogleService-Info.plist in Resources */,
+				6AF04C0F2054C58A002DAE48 /* moments.mp4 in Resources */,
+				08C538AD2043D274002C2393 /* Podfile in Resources */,
+				08C5389E2043D1C6002C2393 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		902914278C7699DEAF85259C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Fastalk/Pods-Fastalk-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fastalk/Pods-Fastalk-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A54D14CAC304D30DD641E027 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Fastalk-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F46BBF53044BB2D156A4D179 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fastalk/Pods-Fastalk-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		08C538912043D1C6002C2393 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08CDD056204BA9D7007439F5 /* MyTabBarController.swift in Sources */,
+				08CDD05A204BB48A007439F5 /* Chat.swift in Sources */,
+				0825C5382071BB9E00CF29ED /* SearchResultsTableViewCell.swift in Sources */,
+				08C5389B2043D1C6002C2393 /* ChatViewController.swift in Sources */,
+				0825C52E206F472500CF29ED /* SearchTableViewController.swift in Sources */,
+				080F6C7B204B951C008A5C98 /* LoginOrRegisterViewController.swift in Sources */,
+				08CDD058204BB423007439F5 /* ChatsListTableViewController.swift in Sources */,
+				086C8EFB205236B700F74AAF /* Contact.swift in Sources */,
+				08E31AE1204CDD940033A7BD /* SetUsernameViewController.swift in Sources */,
+				08957DCA204E536800EB10F7 /* PopoverViewController.swift in Sources */,
+				08E31AE3204CE2620033A7BD /* Config.swift in Sources */,
+				08C538992043D1C6002C2393 /* AppDelegate.swift in Sources */,
+				086C8EF72051FC7000F74AAF /* SettingsViewController.swift in Sources */,
+				085B9032204F4641001DDE8D /* ContactsTableViewController.swift in Sources */,
+				0825C534206F4FBB00CF29ED /* Message.swift in Sources */,
+				0825C532206F4C5A00CF29ED /* SearchMessageCell.swift in Sources */,
+				08C538B22043D5A6002C2393 /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		08C5389C2043D1C6002C2393 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				08C5389D2043D1C6002C2393 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		08C538A12043D1C6002C2393 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				08C538A22043D1C6002C2393 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		08C538A52043D1C6002C2393 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		08C538A62043D1C6002C2393 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		08C538A82043D1C6002C2393 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E49F27962CDE2497FDA5C3D /* Pods-Fastalk.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Fastalk/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iosgroup7.Fastalk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		08C538A92043D1C6002C2393 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 664D00B332CD5FC3A820582F /* Pods-Fastalk.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Fastalk/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iosgroup7.Fastalk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		08C538902043D1C6002C2393 /* Build configuration list for PBXProject "Fastalk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08C538A52043D1C6002C2393 /* Debug */,
+				08C538A62043D1C6002C2393 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		08C538A72043D1C6002C2393 /* Build configuration list for PBXNativeTarget "Fastalk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08C538A82043D1C6002C2393 /* Debug */,
+				08C538A92043D1C6002C2393 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08C5388D2043D1C6002C2393 /* Project object */;
+}
