@@ -8,19 +8,21 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 
-class SetUsernameViewController: UIViewController {
+class SetUsernameViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     private var usersRef = Constants.refs.databaseUsers
     var alertController:UIAlertController? = nil
     var usernameTextField: UITextField?
     var actionToEnable: UIAlertAction?
     
+    @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var labelUsername: UILabel!
     @IBOutlet weak var labelEmail: UILabel!
     @IBOutlet weak var buttonSet: UIButton!
-    @IBOutlet weak var buttonDone: UIButton!
     
     var username: String?
+    var URL: String?
     let userId = Auth.auth().currentUser?.uid
     let email = Auth.auth().currentUser?.email
     
@@ -28,7 +30,7 @@ class SetUsernameViewController: UIViewController {
         super.viewDidLoad()
         labelEmail.text = self.email
         self.title = "Complete Profile"
-        self.buttonDone.isEnabled = false
+        //self.buttonDone.isEnabled = false
     }
     
     // TODO: - Require username
@@ -48,8 +50,7 @@ class SetUsernameViewController: UIViewController {
         let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) -> Void in
             self.username = self.usernameTextField!.text
             self.labelUsername.text = self.username
-            self.updateUserInfo()
-            self.buttonDone.isEnabled = true
+            //self.buttonDone.isEnabled = true
             self.buttonSet.isHidden = true
         })
         
@@ -68,7 +69,21 @@ class SetUsernameViewController: UIViewController {
         ]
         self.usersRef.child(self.userId!).setValue(userItem)
         
-        Config.setUsername(self.username!)
+        //Config.setUsername(self.username!)
+    }
+    
+    private func uploadFirebase() {
+        let storage = Storage.storage()
+        let storageRef = storage.reference().child("\(username!)")
+        if let uploadData = UIImagePNGRepresentation(self.photo.image!) {
+            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+                if error != nil {
+                    print(error)
+                    return
+                }
+                self.URL = metadata?.downloadURL()?.absoluteString
+            })
+        }
     }
     
     @objc func checkIfUserExists() {
@@ -93,6 +108,26 @@ class SetUsernameViewController: UIViewController {
         presentAlert()
     }
     
+    @IBAction func uploadPic(_ sender: Any) {
+        let image = UIImagePickerController()
+        image.delegate = self
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        image.allowsEditing = true
+        self.present(image, animated: true){
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            photo.image = image
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func buttonDone(_ sender: Any) {
+        uploadFirebase()
+        self.updateUserInfo()
+    }
     /*
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

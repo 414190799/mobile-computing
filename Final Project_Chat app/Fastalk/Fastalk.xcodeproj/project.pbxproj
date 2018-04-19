@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		080C2EC52084549100F0C5C9 /* ChatsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080C2EC42084549100F0C5C9 /* ChatsListTableViewCell.swift */; };
 		080F6C7B204B951C008A5C98 /* LoginOrRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080F6C7A204B951C008A5C98 /* LoginOrRegisterViewController.swift */; };
 		0825C52E206F472500CF29ED /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825C52D206F472500CF29ED /* SearchTableViewController.swift */; };
 		0825C532206F4C5A00CF29ED /* SearchMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825C531206F4C5A00CF29ED /* SearchMessageCell.swift */; };
@@ -30,11 +31,15 @@
 		08E31AE1204CDD940033A7BD /* SetUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E31AE0204CDD940033A7BD /* SetUsernameViewController.swift */; };
 		08E31AE3204CE2620033A7BD /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E31AE2204CE2620033A7BD /* Config.swift */; };
 		2C0C60C47A3A95B853633E5D /* Pods_Fastalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B12BDBBEECBFED4BBF45BF5 /* Pods_Fastalk.framework */; };
+		6A1DDCE9207DD72900BAAFE1 /* NewChatContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1DDCE8207DD72900BAAFE1 /* NewChatContactsViewController.swift */; };
+		6A1DDCEB207EAFA800BAAFE1 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1DDCEA207EAFA800BAAFE1 /* CustomTableViewCell.swift */; };
+		6A5D4F882081742400C3EBE5 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D4F872081742400C3EBE5 /* Helper.swift */; };
 		6AF04C0B2054C2A7002DAE48 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF04C0A2054C2A7002DAE48 /* AVFoundation.framework */; };
 		6AF04C0F2054C58A002DAE48 /* moments.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 6AF04C0E2054C58A002DAE48 /* moments.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		080C2EC42084549100F0C5C9 /* ChatsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsListTableViewCell.swift; sourceTree = "<group>"; };
 		080F6C7A204B951C008A5C98 /* LoginOrRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOrRegisterViewController.swift; sourceTree = "<group>"; };
 		0825C52D206F472500CF29ED /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		0825C531206F4C5A00CF29ED /* SearchMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMessageCell.swift; sourceTree = "<group>"; };
@@ -63,6 +68,9 @@
 		1E49F27962CDE2497FDA5C3D /* Pods-Fastalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fastalk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fastalk/Pods-Fastalk.debug.xcconfig"; sourceTree = "<group>"; };
 		3B12BDBBEECBFED4BBF45BF5 /* Pods_Fastalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fastalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		664D00B332CD5FC3A820582F /* Pods-Fastalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fastalk.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fastalk/Pods-Fastalk.release.xcconfig"; sourceTree = "<group>"; };
+		6A1DDCE8207DD72900BAAFE1 /* NewChatContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatContactsViewController.swift; sourceTree = "<group>"; };
+		6A1DDCEA207EAFA800BAAFE1 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		6A5D4F872081742400C3EBE5 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		6AF04C0A2054C2A7002DAE48 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6AF04C0E2054C58A002DAE48 /* moments.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = moments.mp4; path = Fastalk/Assets.xcassets/moments.mp4; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -95,6 +103,10 @@
 				0825C52D206F472500CF29ED /* SearchTableViewController.swift */,
 				0825C531206F4C5A00CF29ED /* SearchMessageCell.swift */,
 				0825C5372071BB9E00CF29ED /* SearchResultsTableViewCell.swift */,
+				6A1DDCE8207DD72900BAAFE1 /* NewChatContactsViewController.swift */,
+				6A1DDCEA207EAFA800BAAFE1 /* CustomTableViewCell.swift */,
+				6A5D4F872081742400C3EBE5 /* Helper.swift */,
+				080C2EC42084549100F0C5C9 /* ChatsListTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -327,9 +339,12 @@
 				0825C5382071BB9E00CF29ED /* SearchResultsTableViewCell.swift in Sources */,
 				08C5389B2043D1C6002C2393 /* ChatViewController.swift in Sources */,
 				0825C52E206F472500CF29ED /* SearchTableViewController.swift in Sources */,
+				6A1DDCEB207EAFA800BAAFE1 /* CustomTableViewCell.swift in Sources */,
 				080F6C7B204B951C008A5C98 /* LoginOrRegisterViewController.swift in Sources */,
+				6A5D4F882081742400C3EBE5 /* Helper.swift in Sources */,
 				08CDD058204BB423007439F5 /* ChatsListTableViewController.swift in Sources */,
 				086C8EFB205236B700F74AAF /* Contact.swift in Sources */,
+				080C2EC52084549100F0C5C9 /* ChatsListTableViewCell.swift in Sources */,
 				08E31AE1204CDD940033A7BD /* SetUsernameViewController.swift in Sources */,
 				08957DCA204E536800EB10F7 /* PopoverViewController.swift in Sources */,
 				08E31AE3204CE2620033A7BD /* Config.swift in Sources */,
@@ -338,6 +353,7 @@
 				085B9032204F4641001DDE8D /* ContactsTableViewController.swift in Sources */,
 				0825C534206F4FBB00CF29ED /* Message.swift in Sources */,
 				0825C532206F4C5A00CF29ED /* SearchMessageCell.swift in Sources */,
+				6A1DDCE9207DD72900BAAFE1 /* NewChatContactsViewController.swift in Sources */,
 				08C538B22043D5A6002C2393 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -477,6 +493,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Fastalk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iosgroup7.Fastalk;
@@ -493,6 +510,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Fastalk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iosgroup7.Fastalk;

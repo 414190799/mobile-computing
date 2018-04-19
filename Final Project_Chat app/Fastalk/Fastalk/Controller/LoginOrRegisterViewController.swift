@@ -17,8 +17,7 @@ class LoginOrRegisterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var segControl: UISegmentedControl!
     @IBOutlet weak var labelEmail: UILabel!
     @IBOutlet weak var labelPassword: UILabel!
-    
-    //new variables
+
     var Player:AVPlayer!
     var PlayerLayer:AVPlayerLayer!
     
@@ -33,8 +32,7 @@ class LoginOrRegisterViewController: UIViewController, UITextFieldDelegate {
         self.textFieldPassword.isSecureTextEntry = true
         self.textFieldEmail.delegate = self
         self.textFieldPassword.delegate = self
-        
-        //new code
+
         let URL = Bundle.main.url(forResource: "moments", withExtension: "mp4")
         
         Player = AVPlayer.init(url: URL!)
@@ -48,10 +46,11 @@ class LoginOrRegisterViewController: UIViewController, UITextFieldDelegate {
         view.layer.insertSublayer(PlayerLayer, at: 0)
         NotificationCenter.default.addObserver(self, selector: #selector(playerItemReachEnd(notification:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: Player.currentItem)
     }
+    
     @objc func playerItemReachEnd(notification: NSNotification){
         Player.seek(to:kCMTimeZero)
     }
-    //new code ends
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -78,7 +77,6 @@ class LoginOrRegisterViewController: UIViewController, UITextFieldDelegate {
     private func check() -> Bool{
         self.email = textFieldEmail.text!
         self.password = textFieldPassword.text!
-        // TODO: - fix log in
         if (email!.isEmpty) {
             labelEmail.text = "Please provide an email"
             return false
@@ -117,8 +115,8 @@ class LoginOrRegisterViewController: UIViewController, UITextFieldDelegate {
     private func saveUser() {
         let userId = Auth.auth().currentUser?.uid
         let email = Auth.auth().currentUser?.email
-        Config.setUserId(userId!)
-        Config.setEmail(email!)
+//        Config.setUserId(userId!)
+//        Config.setEmail(email!)
     }
     
     // MARK: - UI Actions
@@ -138,8 +136,6 @@ class LoginOrRegisterViewController: UIViewController, UITextFieldDelegate {
                 register()
             }
         }
-        // TODO: - add email format check here
-        // TODO: - add a logout somewhere
     }
     
     // MARK: - Navigation

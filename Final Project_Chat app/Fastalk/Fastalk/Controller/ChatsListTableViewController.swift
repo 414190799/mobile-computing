@@ -15,15 +15,18 @@ class ChatsListTableViewController: UITableViewController {
     private var usersRef = Constants.refs.databaseUsers
     private var chatsRefHandle: DatabaseHandle?
     private var currentUserChatsRef: DatabaseReference?
+    private var groupChatsRef = Constants.refs.databaseGroups
     var username: String?
     let userId = Auth.auth().currentUser?.uid
+    var selectedChat: Chat?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Chats"
         self.currentUserChatsRef = self.chatsRef.child(self.userId!)
-        observeChats()
+
         getUsername()
+        observeChats()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
     }
@@ -48,15 +51,21 @@ class ChatsListTableViewController: UITableViewController {
         return chats.count
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "ExistingChats"
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-        cell.textLabel?.text = chats[(indexPath as NSIndexPath).row].receiverName
-        cell.detailTextLabel?.text = chats[(indexPath as NSIndexPath).row].timeStamp
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ChatsListTableViewCell
+        cell.labelReceiver.text = chats[(indexPath as NSIndexPath).row].receiverName
+        cell.labelLastMessage.text = chats[(indexPath as NSIndexPath).row].lastMessage
+        cell.labelTime.text = chats[(indexPath as NSIndexPath).row].timeStamp
+        if chats[indexPath.row].hasNewMessage {
+            cell.imageBell.isHidden = false
+        } else {
+            cell.imageBell.isHidden = true
+        }
+        //cell.imageView?.image = UIImage(named: "AppIcon")
+        
         return cell
     }
-    
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = UIContextualAction(style: .destructive, title:"Delete"){
@@ -69,6 +78,34 @@ class ChatsListTableViewController: UITableViewController {
         let config = UISwipeActionsConfiguration(actions:[delete])
         config.performsFirstActionWithFullSwipe = false
         return config
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        let storyboard = UIStoryboard(name: "Main", bundle:nil)
+                if let indexPath = tableView.indexPathForSelectedRow{
+                    let selectedRow = indexPath.row
+                    let selectedChat = chats[selectedRow]
+                    selectedChat.setHasNewMessage(false)
+                    
+                    //update chat hasNewMessage in database
+                    if (selectedChat.receiverName != "group") {
+                        let chatId = selectedChat.id
+                        let userChatRef = Constants.refs.databaseChats.child(self.userId!).child(chatId)
+                        userChatRef.updateChildValues(["hasNewMessage" : false])
+                    } else {
+                        self.groupChatsRef.child(selectedChat.id).updateChildValues(["hasNewMessage" : true])
+                    }
+                    
+                    //let chatVc = segue.destination as! ChatViewController
+                    //let chatVC =  storyboard.instantiateViewController(withIdentifier: "chatVC")
+                    let chatVC = ChatViewController()
+                    chatVC.chat = selectedChat
+                    chatVC.senderId = self.userId
+                    chatVC.senderDisplayName = self.username
+                    self.present(chatVC, animated: true, completion: nil)
+                }
+        //let chatVC = storyboard.instantiateViewController(withIdentifier: "chatVC") as? ChatViewController
+
     }
     
     // MARK: - Privage Methods
@@ -89,13 +126,69 @@ class ChatsListTableViewController: UITableViewController {
         }
     }
     */
+    
     private func observeChats() {
         chatsRefHandle = self.currentUserChatsRef?.observe(.childAdded, with: { (snapshot) -> Void in
             let chatsData = snapshot.value as! Dictionary<String, AnyObject>
             let chatId = snapshot.key
-            if let receiverId = chatsData["receiverId"] as! String!, let receiverName = chatsData["receiverName"] as! String!, let timeStamp = chatsData["timeStamp"] as! String!, receiverId.count > 0 {
-                self.chats.insert(Chat(id: chatId, receiverId: receiverId, receiverName: receiverName, timeStamp: timeStamp), at: 0)
+            if let receiverId = chatsData["receiverId"] as! String!, let receiverName = chatsData["receiverName"] as! String!, let lastMessage = chatsData["lastMessage"] as! String!, let timeStamp = chatsData["timeStamp"] as! String!, let hasNewMessage = chatsData["hasNewMessage"] as! Bool!, receiverId.count > 0 {
+                self.chats.insert(Chat(id: chatId, receiverId: receiverId, receiverName: receiverName, lastMessage: lastMessage, timeStamp: timeStamp, hasNewMessage: hasNewMessage), at: 0)
+                self.chats = self.chats.sorted(by: { $0.timeStamp > $1.timeStamp })
                 self.tableView.reloadData()
+            } else {
+                print("Error! Could not decode chat data")
+            }
+        })
+        
+        //TODO: -show new messages reminder
+        
+        //show new message for individual chat
+        self.currentUserChatsRef?.observe(.childChanged, with: { (snapshot) in
+            //find the chat in the array
+            //move it to the top
+            let chatsData = snapshot.value as? Dictionary<String, AnyObject>
+            let chatId = snapshot.key
+            if let lastMessage = chatsData?["lastMessage"] as? String, let timeStamp = chatsData?["timeStamp"] as? String {
+                let index = self.chats.index(where: { (item) -> Bool in
+                    item.id == chatId
+                })
+                if let fromIndex = index {
+                    self.chats[fromIndex].setLastMessage(lastMessage)
+                    self.chats[fromIndex].setTimeStamp(timeStamp)
+                    self.chats[fromIndex].setHasNewMessage(true)
+                    if fromIndex != 0 {
+                        let changedChat = self.chats.remove(at: fromIndex)
+                        self.chats.insert(changedChat, at: 0)
+                    }
+                    self.tableView.reloadData()
+                }
+            } else {
+                print("Error! Could not decode chat data")
+            }
+        })
+        
+        //show new message for group chat
+        chatsRefHandle = self.groupChatsRef.observe(.childChanged, with: { (snapshot) in
+            let chatsData = snapshot.value as? Dictionary<String, AnyObject>
+            let chatId = snapshot.key
+            if let lastMessage = chatsData?["lastMessage"] as? String, let timeStamp = chatsData?["timeStamp"] as? String {
+                let index = self.chats.index(where: { (item) -> Bool in
+                    item.id == chatId
+                })
+                if let fromIndex = index {
+                    self.chats[fromIndex].setLastMessage(lastMessage)
+                    self.chats[fromIndex].setTimeStamp(timeStamp)
+                    self.chats[fromIndex].setHasNewMessage(true)
+                    if fromIndex != 0 {
+                        let changedChat = self.chats.remove(at: fromIndex)
+                        self.chats.insert(changedChat, at: 0)
+                    }
+                    let userChatRef = Constants.refs.databaseChats.child(self.userId!).child(chatId)
+                    userChatRef.updateChildValues(["timeStamp" : timeStamp])
+                    userChatRef.updateChildValues(["lastMessage" : lastMessage])
+                    userChatRef.updateChildValues(["hasNewMessage" : true])
+                    self.tableView.reloadData()
+                }
             } else {
                 print("Error! Could not decode chat data")
             }
@@ -124,38 +217,51 @@ class ChatsListTableViewController: UITableViewController {
     }
 
     // MARK: - UI Actions
-    @IBAction func AddClickedAction(_ sender: UIBarButtonItem) {
-        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "popoverViewController")
-        vc.modalPresentationStyle = UIModalPresentationStyle.popover
-        vc.preferredContentSize = CGSize(width: 150, height: 100)
-        let popover = vc.popoverPresentationController!
-        popover.barButtonItem = sender
-        popover.delegate = self
-        present(vc, animated: true, completion:nil)
-    }
-    
+//    @IBAction func AddClickedAction(_ sender: UIBarButtonItem) {
+//        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "popoverViewController")
+//        vc.modalPresentationStyle = UIModalPresentationStyle.popover
+//        vc.preferredContentSize = CGSize(width: 150, height: 240)
+//        let popover = vc.popoverPresentationController!
+//        popover.barButtonItem = sender
+//        popover.delegate = self
+//        present(vc, animated: true, completion:nil)
+//    }
+//
     // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let indexPath = tableView.indexPathForSelectedRow{
-            let selectedRow = indexPath.row
-            let chatVc = segue.destination as! ChatViewController
-            let selectedChat = chats[selectedRow]
-            chatVc.chat = selectedChat
-            chatVc.senderId = self.userId
-            chatVc.senderDisplayName = self.username
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let indexPath = tableView.indexPathForSelectedRow{
+//            let selectedRow = indexPath.row
+//            let chatVc = segue.destination as! ChatViewController
+//            let selectedChat = chats[selectedRow]
+//            chatVc.chat = selectedChat
+//            chatVc.senderId = self.userId
+//            chatVc.senderDisplayName = self.username
+//        }
+//    }
     //set height
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
-
+//
+//    private func getChat(){
+//
+//        let storyboard = UIStoryboard(name: "Main", bundle:nil)
+//        let chatVC = storyboard.instantiateViewController(withIdentifier: "chatVC") as? ChatViewController
+//        //let nav = UINavigationController(rootViewController: chatVC!)
+//        chatVC?.chat = self.selectedChat
+//        chatVC?.senderId = self.userId
+//        chatVC?.senderDisplayName = self.username
+//        self.present(chatVC!, animated: true, completion: nil)
+//        //self dismissViewControllerAnimated:NO completion:nil
+//    }
 }
 
-extension ChatsListTableViewController: UIPopoverPresentationControllerDelegate {
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.none
-    }
-}
+
+//
+//extension ChatsListTableViewController: UIPopoverPresentationControllerDelegate {
+//    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+//        return UIModalPresentationStyle.none
+//    }
+//}
 

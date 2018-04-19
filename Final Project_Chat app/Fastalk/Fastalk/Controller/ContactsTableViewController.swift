@@ -18,11 +18,6 @@ class ContactsTableViewController: UITableViewController {
     private var friendChatsRef: DatabaseReference?
     private var chatsRef = Constants.refs.databaseChats
     let userId = Auth.auth().currentUser!.uid
-    var alertController: UIAlertController?
-    var usernameTextField: UITextField?
-    var actionToEnable: UIAlertAction?
-    var contactUsername: String?
-    var contactUserId: String?
     var username: String?
     var selectedChat: Chat?
 
@@ -31,10 +26,8 @@ class ContactsTableViewController: UITableViewController {
         self.title = "Contacts"
         getUsername()
         startObserve()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
     }
-    
+
     deinit {
         if let refHandle = userContactsRefHandle {
             self.userContactsRef!.removeObserver(withHandle: refHandle)
@@ -43,18 +36,15 @@ class ContactsTableViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
     // MARK: - Overriden Methods
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return contacts.count
     }
 
@@ -62,13 +52,32 @@ class ContactsTableViewController: UITableViewController {
         let reuseIdentifier = "ExistingContacts"
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         cell.textLabel?.text = contacts[(indexPath as NSIndexPath).row].username
+        cell.imageView?.image = UIImage(named: "AppIcon")
+        let imageName = contacts[(indexPath as NSIndexPath).row].username
+        let imageURL = Storage.storage().reference(forURL: "gs://fastalkapp.appspot.com").child(imageName)
+        imageURL.downloadURL(completion: { (url, error) in
+            if error != nil {
+                print(error?.localizedDescription)
+                return
+            }
+            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                if error != nil {
+                    print(error)
+                    return
+                }
+                guard let imageData = UIImage(data: data!) else { return}
+                DispatchQueue.main.async {
+                    cell.imageView?.image = imageData
+                }
+            }).resume()
+            
+        })
         return cell
     }
     
-    // TODO: - check if chat already exist
-    // if chat exist, not add
-    // if chat does not exist, but friend chat exist, get the chat Id
-    // if chat does not exist on both sides, add a new chat
+    // if user's chat exist, not add
+    // if user's chat does not exist, but friend's chat exist, get the chat Id
+    // if the chat does not exist on both sides, add a new chat
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let friendname = contacts[indexPath.row].username
         let friendId = contacts[indexPath.row].userId
@@ -81,17 +90,15 @@ class ContactsTableViewController: UITableViewController {
                 let chatContent = chat[id] as! NSDictionary
                 let receiverId = chatContent["receiverId"] as! String
                 let receiverName = chatContent["receiverName"] as! String
+                let lastMessage = chatContent["lastMessage"] as! String
                 let timeStamp = chatContent["timeStamp"] as! String
-                let chatItem = Chat(id: id, receiverId: receiverId, receiverName: receiverName, timeStamp: timeStamp)
+                let hasNewMessage = chatContent["hasNewMessage"] as! Bool
+                let chatItem = Chat(id: id, receiverId: receiverId, receiverName: receiverName, lastMessage: lastMessage, timeStamp: timeStamp, hasNewMessage: hasNewMessage)
                 self.selectedChat = chatItem
-                self.performSegue(withIdentifier: "ContactsToChat", sender: self)
-//                print("id", id)
-//                print("receiverId", receiverId)
-//                print("receiverName", receiverName)
-//                print("timestamp", timeStamp)
+                //self.performSegue(withIdentifier: "ContactsToChat", sender: self)
+                self.getChat()
             } else {
                 self.chatsRef.child(friendId).queryOrdered(byChild: "receiverId").queryEqual(toValue: self.userId).observeSingleEvent(of: .value, with: { (snapshot) in
-                    let date = self.getDate()
                     var chatId = "0"
                     if (snapshot.exists()) {
                         let chat = snapshot.value as! NSDictionary
@@ -100,8 +107,10 @@ class ContactsTableViewController: UITableViewController {
                         let friendChatItem = [
                             "receiverName": self.username,
                             "receiverId": self.userId,
-                            "timeStamp": date
-                        ]
+                            "lastMessage": "",
+                            "timeStamp": "",
+                            "hasNewMessage": false
+                            ] as [String : Any]
                         self.friendChatsRef = self.chatsRef.child(friendId)
                         let friendNewChatRef = self.friendChatsRef!.childByAutoId()
                         friendNewChatRef.setValue(friendChatItem)
@@ -111,12 +120,15 @@ class ContactsTableViewController: UITableViewController {
                     let userChatItem = [
                         "receiverName": friendname,
                         "receiverId": friendId,
-                        "timeStamp": date
-                    ]
+                        "lastMessage": "",
+                        "timeStamp": "",
+                        "hasNewMessage": false
+                        ] as [String : Any]
                     userNewChatRef.setValue(userChatItem)
-                    let chatItem = Chat(id: chatId, receiverId: friendId, receiverName: friendname, timeStamp: date)
+                    let chatItem = Chat(id: chatId, receiverId: friendId, receiverName: friendname, lastMessage: "", timeStamp: "", hasNewMessage: false)
                     self.selectedChat = chatItem
-                    self.performSegue(withIdentifier: "ContactsToChat", sender: self)
+                    //self.performSegue(withIdentifier: "ContactsToChat", sender: self)
+                    self.getChat()
                 })
             }
         })
@@ -136,21 +148,7 @@ class ContactsTableViewController: UITableViewController {
                 print("Error! Could not decode contact data")
             }
         })
-    }
-    
-    private func getDate() -> String{
-        let currentDate = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "hh:mm MM/dd/yy"
-        let convertedDate = dateFormatter.string(from: currentDate)
-        return convertedDate
-    }
-    
-    private func addNewContact() {
-        let contactItem = [
-            "username": self.contactUsername!
-        ]
-        self.userContactsRef!.child(self.contactUserId!).setValue(contactItem)
+        //TODO: reorder the tabel cells according to time
     }
     
     private func getUsername() {
@@ -163,53 +161,17 @@ class ContactsTableViewController: UITableViewController {
             }
         })
     }
-    
-    @objc private func checkIfContactUsernameExists() {
-        let contactUsername = usernameTextField!.text
-        self.usersRef.queryOrdered(byChild: "username").queryEqual(toValue: contactUsername).observeSingleEvent(of: .value, with: { (snapshot) in
-            if snapshot.exists() {
-                self.actionToEnable!.isEnabled = true
-                self.alertController?.message = "User Found"
-                let contact = snapshot.value as! NSDictionary
-                let keys = contact.allKeys as! [String]
-                let contactUserId = keys[0]
-                self.contactUserId = contactUserId
-                self.contactUsername = contactUsername
-            } else {
-                self.alertController?.message = "User does not exist"
-            }
-        })
-    }
-    
-    @IBAction func buttonAddClickedAction(_ sender: Any) {
-        self.alertController = UIAlertController(title: "Add Contact", message: "Please provide the username", preferredStyle: UIAlertControllerStyle.alert)
+
+    private func getChat(){
         
-        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) -> Void in
-            //add user to contacts
-            self.addNewContact()
-        })
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel)
-        
-        alertController!.addAction(OKAction)
-        alertController!.addAction(cancelAction)
-        
-        self.alertController!.addTextField { (textField) -> Void in
-            self.usernameTextField = textField
-            self.usernameTextField?.placeholder = "Enter the username"
-        }
-        OKAction.isEnabled = false
-        actionToEnable = OKAction
-        present(self.alertController!, animated: true, completion:nil)
-        
-        self.usernameTextField!.addTarget(self, action: #selector(checkIfContactUsernameExists), for: .editingChanged)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let chatVc = segue.destination as! ChatViewController
-        chatVc.chat = self.selectedChat
-        chatVc.senderId = self.userId
-        chatVc.senderDisplayName = self.username
+        let storyboard = UIStoryboard(name: "Main", bundle:nil)
+        let chatVC = storyboard.instantiateViewController(withIdentifier: "chatVC") as? ChatViewController
+        //let nav = UINavigationController(rootViewController: chatVC!)
+        chatVC?.chat = self.selectedChat
+        chatVC?.senderId = self.userId
+        chatVC?.senderDisplayName = self.username
+        self.present(chatVC!, animated: true, completion: nil)
+        //self dismissViewControllerAnimated:NO completion:nil
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

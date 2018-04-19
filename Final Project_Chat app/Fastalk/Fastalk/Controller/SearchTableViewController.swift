@@ -29,12 +29,6 @@ class SearchTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Search"
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -137,7 +131,7 @@ class SearchTableViewController: UITableViewController {
 
 extension SearchTableViewController: SearchMessageCellProtocol {
     func searchClicked(_ sender: SearchMessageCell) {
-        //let keyword = self.textFieldSearch?.text
+        let keyword = self.textFieldSearch!.text!
         self.messagesByUserRef.child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
             if (snapshot.exists()) {
                 let retrievedMessages = snapshot.value as! NSDictionary
@@ -149,11 +143,12 @@ extension SearchTableViewController: SearchMessageCellProtocol {
                     let senderName = messageContent["senderName"] as! String
                     let receiverId = messageContent["receiverId"] as! String
                     let receiverName = messageContent["receiverName"] as! String
-                    let message = Message(id: id, text: text, senderId: senderId, senderName: senderName, receiverId: receiverId, receiverName: receiverName)
-                    // TODO: - filter message locally
+                    let timeStamp = messageContent["timeStamp"] as! String
+                    let message = Message(id: id, text: text, senderId: senderId, senderName: senderName, receiverId: receiverId, receiverName: receiverName, timeStamp: timeStamp)
                     self.messages.append(message)
-                    self.tableView.reloadData()
                 }
+                self.messages = self.messages.filter { $0.text.lowercased().contains(keyword.lowercased()) }
+                self.tableView.reloadData()
             }
         })
     }

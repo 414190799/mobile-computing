@@ -2,4 +2,54 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fastalk/Controller/PopoverViewController.swift"
+            timestampString = "545684514.649384"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "groupChatButtonClicked(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.DataSnapshot) -&gt; () in Fastalk.PopoverViewController.checkIfGroupExists() -&gt; ()"
+                  moduleName = "Fastalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xiaotu/Documents/GitHub/Fastalk/Fastalk/Fastalk/Controller/PopoverViewController.swift"
+                  timestampString = "544910761.218137"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "954">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "implicit closure #1 : @autoclosure () throws -&gt; Swift.String in closure #1 (__ObjC.DataSnapshot) -&gt; () in Fastalk.PopoverViewController.checkIfGroupExists() -&gt; ()"
+                  moduleName = "Fastalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xiaotu/Documents/GitHub/Fastalk/Fastalk/Fastalk/Controller/PopoverViewController.swift"
+                  timestampString = "544910761.232802"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
